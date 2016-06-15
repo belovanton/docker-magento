@@ -16,6 +16,8 @@ RUN apt-get update -y && DEBIAN_FRONTEND=noninteractive && \
         apt-get clean && \
         rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /download/directory
 
+RUN npm install npm -g && npm install grunt-cli -g
+
 ENV NODE_ENV production
 RUN gem install sass 
 WORKDIR /src
