@@ -12,5 +12,7 @@ if [ -n "${SSH_AUTHORIZED_KEY}" ]; then
     echo "${SSH_AUTHORIZED_KEY}" > /root/.ssh/authorized_keys
 fi
 
+chown -R www-data:www-data /var/www
+
 echo "Starting supervisord"
 /usr/local/bin/supervisord -c /etc/supervisord.conf -n

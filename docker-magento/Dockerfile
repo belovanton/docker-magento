@@ -42,8 +42,7 @@ RUN 	cd /usr/src &&\
 	cd /usr/src/nginx-${NGINX_VERSION}/ && make install &&\
         sed -i 's|/usr/sbin/nginx|/home/nginx|g' /etc/init.d/nginx && \
         rm /usr/sbin/nginx &&\
-        mkdir -p /var/nginx/pagespeed_cache && \
-        rm -rf /etc/nginx/sites-enabled /etc/nginx/sites/available
+        mkdir -p /var/nginx/pagespeed_cache
 
 # Define mountable directories.
 VOLUME ["/etc/nginx", "/var/log/nginx", "/var/cache/nginx", "/etc/php-fpm.d", "/var/log/php-fpm", "/var/www"]
@@ -107,5 +106,7 @@ COPY config/supervisord.conf /etc/supervisord.conf
 # Startup script
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
+COPY ./config/nginx/conf.d /etc/nginx/conf.d
+RUN rm -rf /etc/nginx/sites-enabled/default
 
 CMD ["/entrypoint.sh"]
