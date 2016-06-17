@@ -80,11 +80,8 @@ RUN locale-gen en_US.UTF-8 &&\
 	cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime &&\
 	echo "Europe/Moscow" > /etc/timezone &&\
 	mkdir /var/run/sshd &&\
-	sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config &&\
-	sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config &&\
-	sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config &&\
 	mkdir /root/.ssh
-
+COPY ./sshd_config /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 RUN sed -ri 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
