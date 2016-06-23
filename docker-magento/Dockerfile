@@ -109,5 +109,5 @@ COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 COPY ./config/nginx/conf.d /etc/nginx/conf.d
 RUN rm -rf /etc/nginx/sites-enabled/default
-
+RUN rm -rf /etc/nginx/sites-available/default
 CMD ["/entrypoint.sh"]
