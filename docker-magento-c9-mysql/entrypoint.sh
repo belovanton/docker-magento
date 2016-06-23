@@ -15,6 +15,6 @@ fi
 chown -R www-data:www-data /var/www &
 rm -rf /etc/nginx/sites-enabled/default
 rm -rf /etc/nginx/sites-available/default
-
+/update_base_url.sh &
 echo "Starting supervisord"
 /usr/local/bin/supervisord -c /etc/supervisord.conf -n
