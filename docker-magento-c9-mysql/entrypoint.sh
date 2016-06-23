@@ -13,6 +13,8 @@ if [ -n "${SSH_AUTHORIZED_KEY}" ]; then
 fi
 
 chown -R www-data:www-data /var/www &
+rm -rf /etc/nginx/sites-enabled/default
+rm -rf /etc/nginx/sites-available/default
 
 echo "Starting supervisord"
 /usr/local/bin/supervisord -c /etc/supervisord.conf -n
