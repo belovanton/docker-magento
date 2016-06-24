@@ -27,7 +27,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN scripts/install-sdk.sh
 ADD ./c9ide.sh /c9ide.sh
 RUN chmod 755 /c9ide.sh
-
+COPY ./nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 COPY config/supervisord.conf /etc/supervisord.conf
 WORKDIR /src/c9sdk
 
