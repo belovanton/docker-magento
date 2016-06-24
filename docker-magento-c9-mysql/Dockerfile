@@ -21,5 +21,6 @@ COPY config/supervisord.conf /etc/supervisord.conf
 RUN mysqld_safe  --initialize-insecure 
 COPY ./update_base_url.sh /update_base_url.sh
 RUN chmod +x /update_base_url.sh
+COPY ./nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 CMD ["/entrypoint.sh"]
